@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+    * { box-sizing: border-box; }
+      html, body {
+	text-align: center;
+	font-family: monospace;
+      }
+      
+      .btn {
+      display: inline-block;
+	padding: 20px 40px;
+	border: 2px solid black;
+	margin: 40px;
+      cursor: pointer;
+      }
+      .result {
+      font-size: 24px;
+    }
+
+    </style>
+  </head>
+  <body>
+    <h1>What should i do today</h1>
+    <p id="date"></p>
+    <div class="cta-wrapper">
+      <a id="cta" class="btn">pick</a>
+    </div>
+    <div class="result-wrapper">
+      <p id="result" class="result">...</p>
+    </div>
+    <script type="text/javascript">
+      console.log("hello world")
+      const button = document.getElementById("cta")
+      const result = document.getElementById("result")
+      const date = document.getElementById("date")
+      const today = new Date().toDateString()
+      date.innerText = today
+      const choices = [
+	"Develop and scan a bunch of BW film ",
+	"Refactor part of the prolly script and improve it and reach a v1.0",
+	"Keep working on the runes_ script",
+	"Read the land of lisp book ",
+	"Follow the lisp MIT lecture series",
+	"Keep learning supercollider from ELI’s series",
+	"Work on emacs config",
+	"Setup a minimalism vim (not nevoid) config for remote vim / rpi",
+	"Clean and reorganize office",
+	"Learn how to use wee chat / IRC (irssi instead of weechat) ",
+	"Implement the wave function collapse algorithm following Dan shipman’s video to create abstract art pieces ",
+	"Work on my website/blog ",
+	"Scan bank papers",
+      ]
+
+      function getRandomInt(max) {
+	return Math.floor(Math.random() * max);
+      }
+      
+      function getNewSuggestion(list) {
+	const result = list[getRandomInt(list.length)]
+	console.log(result)
+	return result
+      }
+      
+      function insertNewSuggestion(elm, list) {
+	elm.innerText = getNewSuggestion(list)
+      }
+
+      button.addEventListener("click", () => insertNewSuggestion(result, choices))
+      </script>
+  </body>
+</html>
